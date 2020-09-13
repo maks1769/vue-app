@@ -22,7 +22,14 @@
     methods: {
       deleteItem(id) {
         axios.delete(`http://kinoha.itis.today/api/history/${id}`)
-            .then(() => this.$store.dispatch('fetchHistory'));
+            .then(() => {
+              this.$store.dispatch('fetchHistory');
+              this.$toasted.show('Транзакция успешно удалена!', {
+                theme: "bubble",
+                position: "bottom-left",
+                duration : 3000
+              });
+            });
       }
     },
   }

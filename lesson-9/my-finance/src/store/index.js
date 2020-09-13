@@ -17,13 +17,13 @@ const store = new Vuex.Store({
         }
     },
     mutations: {
-        addHistory(state, {amount, comment}) {
+        addHistory(state, {amount, comment, date}) {
             axios.post('http://kinoha.itis.today/api/history', {
                 amount: amount,
-                comment: comment
+                comment: comment,
+                date: date,
             }).then(() => {
                 store.dispatch('fetchHistory');
-                console.log(state);
             }).catch(e => {
                 console.log(e);
             });
